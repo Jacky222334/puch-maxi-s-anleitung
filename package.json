@@ -1,0 +1,15 @@
+{
+  "name": "puch-maxi-s-anleitung",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Puch Maxi S – Anleitung für junge Besitzer (HTML)",
+  "scripts": {
+    "start": "serve . -l tcp://0.0.0.0:${PORT:-3000}"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}

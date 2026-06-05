@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Puch Maxi S – Anleitung für junge Besitzer</title>
+  <style>
+    :root {
+      --gruen: #2d8a4e;
+      --gelb: #e6a817;
+      --rot: #c0392b;
+      --blau: #1a5f8a;
+      --hell: #f7f4ef;
+      --papier: #fffdf8;
+      --text: #2c2c2c;
+      --rand: #d4cfc4;
+      --schatten: 0 4px 20px rgba(0,0,0,.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--hell);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 1.05rem;
+    }
+
+    /* Navigation */
+    .nav-toggle {
+      display: none;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 200;
+      background: var(--blau);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: .6rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--blau);
+      color: #fff;
+      overflow-y: auto;
+      z-index: 100;
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    nav h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid rgba(255,255,255,.3);
+    }
+
+    nav a {
+      display: block;
+      color: rgba(255,255,255,.9);
+      text-decoration: none;
+      padding: .45rem .6rem;
+      border-radius: 6px;
+      font-size: .92rem;
+      margin-bottom: .15rem;
+      transition: background .15s;
+    }
+
+    nav a:hover, nav a.active { background: rgba(255,255,255,.15); }
+
+    main {
+      margin-left: 280px;
+      padding: 2rem 2.5rem 4rem;
+      max-width: 900px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--blau) 0%, #0d3d5c 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--schatten);
+    }
+
+    .hero h1 { font-size: 2rem; margin-bottom: .5rem; }
+    .hero .untertitel { opacity: .9; font-size: 1.15rem; }
+    .hero .deckblatt { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .hero .deckblatt img {
+      max-height: 140px;
+      border-radius: 8px;
+      border: 3px solid rgba(255,255,255,.3);
+      background: #fff;
+    }
+
+    /* Kapitel */
+    section {
+      background: var(--papier);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--schatten);
+      border: 1px solid var(--rand);
+      scroll-margin-top: 1rem;
+    }
+
+    section h2 {
+      color: var(--blau);
+      font-size: 1.55rem;
+      margin-bottom: 1rem;
+      padding-bottom: .5rem;
+      border-bottom: 3px solid var(--gelb);
+    }
+
+    section h3 {
+      color: var(--gruen);
+      font-size: 1.15rem;
+      margin: 1.4rem 0 .6rem;
+    }
+
+    p { margin-bottom: .9rem; }
+
+    /* Ampel */
+    .ampel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .8rem;
+      margin: 1.2rem 0;
+    }
+
+    .ampel-karte {
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+
+    .ampel-gruen { background: #d4edda; border: 2px solid var(--gruen); color: #1e5631; }
+    .ampel-gelb  { background: #fff3cd; border: 2px solid var(--gelb); color: #7a5a00; }
+    .ampel-rot   { background: #f8d7da; border: 2px solid var(--rot); color: #842029; }
+
+    .ampel-karte .punkt {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      margin: 0 auto .5rem;
+    }
+
+    .ampel-gruen .punkt { background: var(--gruen); }
+    .ampel-gelb  .punkt { background: var(--gelb); }
+    .ampel-rot   .punkt { background: var(--rot); }
+
+    /* Merksatz */
+    .merksatz {
+      background: linear-gradient(90deg, #e8f4fc, #f0f8ff);
+      border-left: 5px solid var(--blau);
+      padding: 1rem 1.2rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.2rem 0;
+      font-style: italic;
+    }
+
+    .warnung {
+      background: #fff0f0;
+      border: 2px solid var(--rot);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+    }
+
+    .warnung strong { color: var(--rot); }
+
+    .hinweis {
+      background: #fff8e6;
+      border: 2px solid var(--gelb);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+    }
+
+    /* Bilder */
+    .foto-box {
+      margin: 1.2rem 0;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--rand);
+      background: #f0ece4;
+    }
+
+    .foto-box img {
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .foto-box figcaption {
+      padding: .7rem 1rem;
+      font-size: .88rem;
+      color: #555;
+      background: #f5f2eb;
+      border-top: 1px solid var(--rand);
+    }
+
+    .foto-box figcaption strong { color: var(--blau); }
+
+    .foto-zwei {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Tabellen */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: .95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--rand);
+      padding: .6rem .8rem;
+      text-align: left;
+    }
+
+    th { background: #e8f0f5; color: var(--blau); }
+
+    tr:nth-child(even) { background: #faf8f4; }
+
+    /* Listen */
+    ul, ol { margin: .6rem 0 .9rem 1.4rem; }
+    li { margin-bottom: .35rem; }
+
+    /* Quiz & Formular */
+    .quiz-frage {
+      background: #f0f4f8;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: .8rem;
+    }
+
+    .quiz-frage label { display: block; font-weight: 600; margin-bottom: .4rem; }
+
+    .quiz-frage input, .quiz-frage textarea,
+    .karte-feld input, .karte-feld textarea {
+      width: 100%;
+      padding: .5rem .7rem;
+      border: 1px solid var(--rand);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .karte-feld { margin-bottom: .8rem; }
+    .karte-feld label { display: block; font-weight: 600; margin-bottom: .3rem; font-size: .95rem; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.85);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+    }
+
+    .lightbox.offen { display: flex; }
+    .lightbox img { max-width: 95%; max-height: 95%; border-radius: 8px; }
+
+    /* Quellen */
+    .quellen { font-size: .85rem; color: #666; }
+    .quellen a { color: var(--blau); }
+
+    footer {
+      margin-left: 280px;
+      padding: 1.5rem 2.5rem 3rem;
+      font-size: .85rem;
+      color: #777;
+      max-width: 900px;
+    }
+
+    @media (max-width: 800px) {
+      nav { transform: translateX(-100%); transition: transform .25s; }
+      nav.offen { transform: translateX(0); }
+      .nav-toggle { display: block; }
+      main, footer { margin-left: 0; padding: 1.2rem; }
+      .ampel { grid-template-columns: 1fr; }
+      .foto-zwei { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.5rem; }
+    }
+
+    @media print {
+      nav, .nav-toggle, .lightbox { display: none !important; }
+      main, footer { margin-left: 0; }
+      section { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('offen')">☰ Menü</button>
+
+<nav>
+  <h2>📖 Inhaltsverzeichnis</h2>
+  <a href="#start">Start &amp; Ampel-Regel</a>
+  <a href="#was-ist-maxi">Was ist die Maxi S?</a>
+  <a href="#teile">Die wichtigsten Teile</a>
+  <a href="#motor">Wie der Motor denkt</a>
+  <a href="#checks">Checks vor der Fahrt</a>
+  <a href="#zuendung">Die Zündung</a>
+  <a href="#kerze">Die Zündkerze</a>
+  <a href="#unterbrecher">Unterbrecher &amp; Zündzeit</a>
+  <a href="#fehlersuche">Fehlersuche</a>
+  <a href="#kette">Kette, Bremsen, Reifen</a>
+  <a href="#benzin">Benzin &amp; Vergaser</a>
+  <a href="#ersatzteile">Ersatzteile</a>
+  <a href="#wartung">Wartungs-Routine</a>
+  <a href="#werkzeug">Werkzeug &amp; Regeln</a>
+  <a href="#karte">Meine Maxi-Karte</a>
+  <a href="#quiz">Quiz</a>
+  <a href="#erwachsene">Für Erwachsene</a>
+  <a href="#herkunft">Herkunft der Bilder</a>
+</nav>
+
+<main>
+
+  <header class="hero" id="start">
+    <h1>Puch Maxi S</h1>
+    <p class="untertitel">Die einfache Anleitung für einen 10-jährigen Besitzer</p>
+    <div class="deckblatt">
+      <img src="bilder/maxi-s/seite-01.jpg" alt="Deckblatt Owner's Manual Puch Maxi">
+      <img src="bilder/maxi-s-2/seite-01.jpg" alt="Deckblatt Workshop Manual Puch maxi">
+    </div>
+  </header>
+
+  <section>
+    <h2>⚠️ Wichtig vor dem Start</h2>
+    <p>Dieses Heft ist ein <strong>Lernheft</strong>. Ein Kind darf <em>nicht allein</em> schrauben, tanken, die Zündung einstellen oder im Verkehr fahren. Bremsen, Benzin, Elektrik und Probelauf macht immer ein Erwachsener.</p>
+    <p>Du lernst die Teile kennen, verstehst Motor und Zündung, findest typische Fehler und bekommst eine sichere Wartungs-Checkliste.</p>
+
+    <h3>So benutzt du dieses Heft</h3>
+    <p>Du bist der <strong>Besitzer</strong> deiner Puch Maxi S. Deine wichtigste Aufgabe ist nicht schnell schrauben, sondern genau schauen, ruhig denken und sicher arbeiten.</p>
+
+    <div class="ampel">
+      <div class="ampel-karte ampel-gruen">
+        <div class="punkt"></div>
+        🟢 GRÜN<br>Anschauen, melden, mitlesen
+      </div>
+      <div class="ampel-karte ampel-gelb">
+        <div class="punkt"></div>
+        🟡 GELB<br>Mithelfen – nur mit Erwachsenem
+      </div>
+      <div class="ampel-karte ampel-rot">
+        <div class="punkt"></div>
+        🔴 ROT<br>Nur Erwachsene / Werkstatt
+      </div>
+    </div>
+
+    <p><strong>Drei Regeln gelten immer:</strong></p>
+    <ol>
+      <li>Motor aus, Schlüssel/Schalter aus, Moped sicher abstellen.</li>
+      <li>Keine Flammen, keine Zigarette, keine Funken bei Benzin.</li>
+      <li>Nach dem Schrauben prüft ein Erwachsener Bremsen, Gasgriff und alle Schrauben.</li>
+    </ol>
+
+    <div class="merksatz">
+      Ein gutes Moped ist nicht das lauteste. Ein gutes Moped bremst sicher, startet sauber und verliert kein Benzin.
+    </div>
+  </section>
+
+  <section id="was-ist-maxi">
+    <h2>🏍️ Was ist eine Puch Maxi S?</h2>
+    <p>Die Puch Maxi S ist ein kleines, altes Moped mit einem <strong>luftgekühlten Zweitaktmotor</strong>. Viele Maxi S haben einen E50- oder E50A-Automatikmotor. Manche ähnliche Modelle können andere Teile haben.</p>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s-2/seite-04.jpg" alt="Technische Daten aus dem Werkstatthandbuch" loading="lazy">
+      <figcaption><strong>Aus dem Original-Handbuch:</strong> Technische Daten – Motor, Getriebe, Vergaser Bing 1/14, Zweitakt-Mischung 25:1, 48,8 ccm.</figcaption>
+    </figure>
+
+    <div class="hinweis">
+      <strong>Warum Modellprüfung wichtig ist:</strong> Bevor man Teile kauft, schaut ein Erwachsener nach Motortyp, Vergaser, Zündung und Baujahr. Sonst passen Unterbrecher, Dichtungen, Bremsen oder Vergaserteile vielleicht nicht.
+    </div>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-08.jpg" alt="Seriennummer und Typenschild am Rahmen" loading="lazy">
+      <figcaption><strong>Aus dem Bedienungshandbuch:</strong> Hier findest du die Motornummer (oben am Kurbelgehäuse) und das Typenschild am Rahmen.</figcaption>
+    </figure>
+  </section>
+
+  <section id="teile">
+    <h2>🔧 Die wichtigsten Teile</h2>
+    <table>
+      <thead>
+        <tr><th>Teil</th><th>Aufgabe</th><th>Was oft passiert</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Motor</td><td>macht aus Benzin-Luft-Gemisch Bewegung</td><td>wird heiß, braucht Öl im Benzin, saubere Kühlung</td></tr>
+        <tr><td>Zündung</td><td>macht im richtigen Moment den Funken</td><td>Kerze, Stecker, Unterbrecher, Kondensator werden alt</td></tr>
+        <tr><td>Vergaser</td><td>mischt Luft und Benzin</td><td>Düse verstopft, Schwimmer klemmt</td></tr>
+        <tr><td>Kette</td><td>bringt Kraft zum Hinterrad</td><td>wird trocken, längt sich, wird schmutzig</td></tr>
+        <tr><td>Bremsen</td><td>machen langsam und halten an</td><td>Züge und Beläge verschleißen</td></tr>
+        <tr><td>Reifen</td><td>halten Kontakt zur Straße</td><td>verlieren Luft, werden rissig oder hart</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Bedienung am Lenker</h3>
+    <div class="foto-zwei">
+      <figure class="foto-box">
+        <img src="bilder/maxi-s/seite-12.jpg" alt="Bremshebel links und rechts" loading="lazy">
+        <figcaption><strong>Bremsen:</strong> Links (1) = Hinterrad, Rechts (2) = Vorderrad.</figcaption>
+      </figure>
+      <figure class="foto-box">
+        <img src="bilder/maxi-s/seite-14.jpg" alt="Stopschalter und Reifendruck" loading="lazy">
+        <figcaption><strong>Stopschalter:</strong> RUN = Motor läuft, OFF = Motor aus. Reifendruck: vorn 25 psi, hinten 32 psi.</figcaption>
+      </figure>
+    </div>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s-2/seite-16.jpg" alt="Kraftflussdiagramm: Fahren, Leerlauf, Ankurbeln" loading="lazy">
+      <figcaption><strong>Aus dem Werkstatthandbuch:</strong> Blau = wo die Kraft hinfließt. Beim Fahren: Motor → Kette → Rad. Beim Ankurbeln: Pedale → Kette → Motor.</figcaption>
+    </figure>
+  </section>
+
+  <section id="motor">
+    <h2>🧠 Wie der Motor denkt</h2>
+    <p>Ein Motor ist kein Zauber. Er braucht <strong>vier Dinge</strong>:</p>
+    <ol>
+      <li><strong>Benzin + Luft</strong> – der Vergaser macht ein Gemisch.</li>
+      <li><strong>Funke</strong> – die Zündung entzündet das Gemisch.</li>
+      <li><strong>Druck im Zylinder</strong> – Kolben, Ringe und Dichtungen müssen dicht sein.</li>
+      <li><strong>Auspuff frei</strong> – Abgase müssen heraus.</li>
+    </ol>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-11.jpg" alt="Benzinhahn und Vergaser mit Choke" loading="lazy">
+      <figcaption><strong>Benzinhahn:</strong> ON = offen, OFF = zu, RES = Reserve. <strong>Choke:</strong> schwarzer Stab links am Motor – hilft beim kalten Start.</figcaption>
+    </figure>
+
+    <div class="merksatz">
+      Eine Puch Maxi braucht normalerweise Benzin mit Zweitaktöl (im Handbuch: 25 Teile Benzin : 1 Teil Öl). Reines Benzin kann den Motor schwer beschädigen. Das Mischungsverhältnis legt ein Erwachsener fest.
+    </div>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-17.jpg" alt="Öl-Messbecher für Benzin-Öl-Mischung" loading="lazy">
+      <figcaption><strong>Aus dem Handbuch:</strong> Ein Becher Öl auf einen Quart Benzin. Tanken nur bei <em>ausgeschaltetem</em> Motor – kein Rauchen, keine Funken!</figcaption>
+    </figure>
+  </section>
+
+  <section id="checks">
+    <h2>✅ Sichere Checks vor jeder Fahrt</h2>
+    <p>Diese Liste ist zum <strong>Schauen und Melden</strong>. Nicht einfach losfahren, wenn etwas komisch ist.</p>
+    <ul>
+      <li>Bremsen greifen und Hebel fühlen sich normal an.</li>
+      <li>Gasgriff geht von selbst zurück.</li>
+      <li>Reifen haben Luft und keine Risse.</li>
+      <li>Licht und Rücklicht funktionieren (wenn vorhanden).</li>
+      <li>Nichts tropft: kein Benzin, kein Öl.</li>
+      <li>Kette ist nicht trocken, rostig oder extrem locker.</li>
+    </ul>
+
+    <div class="warnung">
+      <strong>🛑 Stop-Zeichen:</strong> Bei Benzingeruch, schlechtem Bremsen, hängendem Gasgriff, losem Rad oder komischem Funken-Test: <em>nicht fahren</em>, sondern Erwachsene holen.
+    </div>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-26.jpg" alt="Wartungs- und Schmierplan aus dem Handbuch" loading="lazy">
+      <figcaption><strong>Aus dem Original-Handbuch:</strong> Wartungsplan – wann Kette, Kerze, Luftfilter, Getriebeöl und Bremsen geprüft werden sollen.</figcaption>
+    </figure>
+  </section>
+
+  <section id="zuendung">
+    <h2>⚡ Die Zündung – der Mini-Blitz</h2>
+    <p>Die Zündung ist wie ein kleiner Blitzmacher. Bei der Puch Maxi erzeugt das drehende Polrad mit Magneten Strom. Der Strom läuft durch Spulen, Kabel und Stecker zur Zündkerze. Dort springt ein Funke über.</p>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s-2/seite-05.jpg" alt="Einstellwerte Motor, Zündung, Reifen aus dem Werkstatthandbuch" loading="lazy">
+      <figcaption><strong>Einstellwerte aus dem Handbuch:</strong> Unterbrecher 0,35–0,45 mm, Zündkerze 0,4–0,5 mm, Reifendruck 25/32 psi, Getriebeöl ATF Type F.</figcaption>
+    </figure>
+
+    <h3>Warum die Zündung oft Ärger macht</h3>
+    <ul>
+      <li>Zündkerze wird schwarz, nass oder alt.</li>
+      <li>Kerzenstecker sitzt locker oder ist korrodiert.</li>
+      <li>Zündkabel ist brüchig oder schlecht eingeschraubt.</li>
+      <li>Unterbrecherkontakt nutzt sich ab.</li>
+      <li>Kondensator kann alt werden – dann stottert die Maxi oft, besonders warm.</li>
+      <li>Stop-Schalter oder ein Kabel kann den Funken auf Masse legen.</li>
+    </ul>
+
+    <div class="hinweis">
+      <strong>Kinder-Erklärung:</strong> Wenn kein Funke kommt, kann der Motor nicht zünden. Dann kann Benzin im Motor sein, aber es brennt nicht im richtigen Moment.
+    </div>
+  </section>
+
+  <section id="kerze">
+    <h2>🔌 Die Zündkerze</h2>
+    <p>Die Kerze hat unten zwei Metallstellen. Dazwischen springt der Funke. Ist der Spalt falsch, ist der Funke schlechter. Typisch: <strong>0,4–0,5 mm</strong>.</p>
+
+    <table>
+      <thead>
+        <tr><th>So sieht sie aus</th><th>Was es bedeuten kann</th><th>Was tun?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>hellbraun/grau</td><td>oft normal</td><td>einbauen, wenn sonst alles stimmt</td></tr>
+        <tr><td>schwarz und trocken</td><td>zu fett, Luftfilter zu, alte Kerze</td><td>Erwachsener prüft Luft/Vergaser/Kerze</td></tr>
+        <tr><td>nass</td><td>zu viel Benzin oder kein Funke</td><td>trocknen lassen, Funke suchen</td></tr>
+        <tr><td>weiß/sehr hell</td><td>möglich: zu mager oder zu heiß</td><td>nicht hart fahren; Erwachsene/Werkstatt</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warnung">
+      <strong>Sicherheitsregel beim Funken-Test:</strong> Ein Erwachsener prüft den Funken nur, wenn kein Benzin auf Motor oder Boden ist. Die Kerze wird an Masse gehalten, Finger weg von Metall und Kabel. <span class="ampel-rot">🔴 Nur Erwachsene</span>
+    </div>
+  </section>
+
+  <section id="unterbrecher">
+    <h2>⏱️ Unterbrecher und Zündzeitpunkt</h2>
+    <p>Der Unterbrecher ist ein kleiner Schalter im Motor. Er öffnet sehr kurz – genau dann entsteht der Zündfunke. Darum muss sein Abstand stimmen.</p>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s-2/seite-08.jpg" alt="Spezialwerkzeuge und Zünd-Einsteller aus dem Werkstatthandbuch" loading="lazy">
+      <figcaption><strong>Aus dem Werkstatthandbuch:</strong> Spezialwerkzeuge – inkl. Zünd-Einsteller (Panel VIII). Das ist Profi-Werkzeug! <span class="ampel-rot">🔴 Nur Erwachsene/Werkstatt</span></figcaption>
+    </figure>
+
+    <table>
+      <thead>
+        <tr><th>Stelle</th><th>Wert</th><th>Einfach erklärt</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Zündkerze</td><td>0,4–0,5 mm</td><td>Spalt, über den der Funke springt</td></tr>
+        <tr><td>Unterbrecher</td><td>0,35–0,45 mm</td><td>Spalt, wenn der Kontakt ganz offen ist</td></tr>
+        <tr><td>Zündzeitpunkt</td><td>ca. 0,8–1,2 mm vor OT</td><td>Funke kommt kurz bevor der Kolben ganz oben ist</td></tr>
+        <tr><td>E50 Getriebeöl</td><td>ATF Type F, ca. 170 cc</td><td>Öl für den 1-Gang-Automatikbereich</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>OT</strong> = oberer Totpunkt – der höchste Punkt des Kolbens. Der Funke kommt etwas vorher, weil das Gemisch einen kleinen Moment braucht, bis es richtig brennt.</p>
+
+    <div class="warnung">
+      <strong>Nicht für Kinderhände:</strong> Zum Einstellen braucht man Fühlerlehre, Messuhr, gutes Licht und Erfahrung. Falsch eingestellte Zündung kann Startprobleme, Leistungsverlust oder Motorschaden verursachen.
+    </div>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-15.jpg" alt="Getriebeöl prüfen und wechseln am Puch Motor" loading="lazy">
+      <figcaption><strong>Getriebeöl (ATF Type F):</strong> 1-Gang-Automatik = ca. 170 cc. Moped muss gerade stehen, nicht überfüllen!</figcaption>
+    </figure>
+  </section>
+
+  <section id="fehlersuche">
+    <h2>🔍 Fehlersuche: Startet nicht</h2>
+    <p>Ruhig suchen – zuerst Benzin, dann Funke, dann Luft/Choke. Immer erst die einfachen Dinge prüfen!</p>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-22.jpg" alt="Fehlersuche: Motor startet nicht" loading="lazy">
+      <figcaption><strong>Aus dem Original-Handbuch:</strong> Fehlersuche – Benzinventil, Tank leer, Stop-Schalter, Kerze, Kabel, Choke, verstopfte Düse.</figcaption>
+    </figure>
+
+    <ol>
+      <li><strong>Benzin:</strong> Tank nicht leer, Benzinhahn offen, Schlauch nicht abgeknickt, Düse nicht verstopft.</li>
+      <li><strong>Funke:</strong> Stop-Schalter auf RUN, Kerze sauber, Stecker fest, Kabel gut, dann Unterbrecher/Kondensator prüfen.</li>
+      <li><strong>Luft:</strong> Luftfilter sauber, Choke nicht hängend, Vergaser nicht voll Schmutz.</li>
+      <li>Wenn alles stimmt und sie trotzdem nicht läuft: Kompression, Simmerringe, Auspuff, Kupplung oder Vergaser genauer prüfen.</li>
+    </ol>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-23.jpg" alt="Fehlersuche: Schlechte Leistung" loading="lazy">
+      <figcaption><strong>Schlechte Leistung?</strong> Choke hängt, Auspuff verstopft, Kerze schmutzig, Kupplung rutscht, Luftfilter voll, falsches Gemisch.</figcaption>
+    </figure>
+
+    <div class="merksatz">
+      Diagnose statt Raten: Eine neue Zündspule hilft nicht, wenn nur der Kerzenstecker locker ist.
+    </div>
+  </section>
+
+  <section id="kette">
+    <h2>⛓️ Kette, Bremsen, Reifen</h2>
+    <p>Diese Teile sind <strong>sicherheitswichtig</strong>. Ein Kind darf sie anschauen und melden. Einstellen macht ein Erwachsener.</p>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-25.jpg" alt="Kette reinigen, schmieren und einstellen" loading="lazy">
+      <figcaption><strong>Aus dem Handbuch:</strong> Kettenspiel ca. 3/4 Zoll (ca. 19 mm) Durchhang. Kette sauber halten und schmieren!</figcaption>
+    </figure>
+
+    <h3>Kette</h3>
+    <ul>
+      <li>Zu trocken: knirscht, rostet, verschleißt schnell.</li>
+      <li>Zu straff: Lager und Kette leiden.</li>
+      <li>Zu locker: kann abspringen.</li>
+      <li>Nach dem Einstellen muss das Hinterrad gerade stehen.</li>
+    </ul>
+
+    <h3>Bremsen</h3>
+    <ul>
+      <li>Hebel dürfen nicht bis zum Lenker durchgehen.</li>
+      <li>Züge sollen leicht laufen und nicht aufdrieseln.</li>
+      <li>Bei schlechtem Bremsen: <strong>nicht fahren</strong>.</li>
+    </ul>
+
+    <h3>Reifen</h3>
+    <ul>
+      <li>Risse, Beulen oder sehr alte harte Reifen sind gefährlich.</li>
+      <li>Reifendruck vor der Fahrt prüfen: laut Handbuch vorn 25 psi, hinten 32 psi (ca. 1,7 / 2,2 bar).</li>
+    </ul>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-20.jpg" alt="Anhalten, Parken und Sicherheit" loading="lazy">
+      <figcaption><strong>Parken &amp; Sicherheit:</strong> Gas los, beide Bremsen, Motor aus, Benzinhahn zu, auf Stand abstellen. Auspuff wird heiß – nicht anfassen!</figcaption>
+    </figure>
+  </section>
+
+  <section id="benzin">
+    <h2>⛽ Benzin, Luftfilter und Vergaser</h2>
+    <p>Der Vergaser ist wie eine kleine Küche: Er mischt Benzin und Luft. Ist die Küche schmutzig, läuft der Motor schlecht.</p>
+
+    <table>
+      <thead>
+        <tr><th>Problem</th><th>So merkt man es</th><th>Erster sicherer Schritt</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Dreck im Benzin</td><td>springt schlecht an, geht aus</td><td>Benzinschlauch/Filter/Benzinhahn ansehen</td></tr>
+        <tr><td>Hauptdüse verstopft</td><td>nimmt kein Gas an</td><td>Vergaser durch Erwachsenen reinigen lassen</td></tr>
+        <tr><td>Luftfilter zu</td><td>wenig Leistung, schwarze Kerze</td><td>Luftfilter reinigen/ersetzen</td></tr>
+        <tr><td>Choke hängt</td><td>läuft zu fett, raucht stark</td><td>Choke-Bewegung prüfen</td></tr>
+        <tr><td>Falsches Gemisch</td><td>Rauch, Hitze, schlechter Lauf</td><td>nicht raten; Setup notieren</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warnung">
+      <strong>Benzin-Regel:</strong> Benzin ist brennbar. Ein Kind füllt nicht allein Benzin um, pustet nicht in Schläuche und arbeitet nicht mit offenem Tank.
+    </div>
+  </section>
+
+  <section id="ersatzteile">
+    <h2>📦 Ersatzteile: Was man sinnvoll bereithält</h2>
+    <p>Kaufen nach System, nicht nach Panik:</p>
+    <table>
+      <thead>
+        <tr><th>Bereich</th><th>Sehr sinnvoll</th><th>Mit Erwachsenen prüfen</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Zündung</td><td>Kerze, Kerzenstecker, Zündkabel</td><td>Unterbrecher, Kondensator, Spule</td></tr>
+        <tr><td>Vergaser/Benzin</td><td>Benzinschlauch, Filter, Dichtungen</td><td>Düsen, Schwimmernadel, Benzinhahn</td></tr>
+        <tr><td>Luft/Auspuff</td><td>Luftfilter, Auspuffdichtung</td><td>Auspuffeinsatz, Krümmerdichtung</td></tr>
+        <tr><td>Antrieb</td><td>Kettenschloss, Kettenöl</td><td>Kette, Ritzel, Lager</td></tr>
+        <tr><td>Bremsen/Züge</td><td>Bremszug, Gaszug</td><td>Bremsbacken, Hebel, Federn</td></tr>
+        <tr><td>Räder</td><td>Schlauch, Ventil</td><td>Reifen, Radlager</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="wartung">
+    <h2>📅 Wartung als Lernroutine</h2>
+    <p>Wartung bedeutet: kleine Dinge regelmäßig machen, damit keine großen Dinge kaputtgehen.</p>
+
+    <h3>Vor jeder Fahrt – Kind darf mitsprechen</h3>
+    <ul>
+      <li>Sieht ein Reifen platt aus?</li>
+      <li>Ist unter dem Moped ein Fleck?</li>
+      <li>Kommt der Gasgriff sofort zurück?</li>
+      <li>Fühlen sich beide Bremshebel normal an?</li>
+      <li>Klingt etwas lose beim vorsichtigen Bewegen?</li>
+    </ul>
+
+    <h3>Jede Woche oder nach Regen – mit Erwachsenen</h3>
+    <ul>
+      <li>Kette reinigen und geeignet ölen.</li>
+      <li>Luftfilter ansehen.</li>
+      <li>Kabel und Züge auf Knicke und Rost prüfen.</li>
+      <li>Schrauben nur kontrollieren, nicht wild nachziehen.</li>
+    </ul>
+
+    <h3>Saisonarbeit – Erwachsene/Werkstatt</h3>
+    <ul>
+      <li>Getriebeöl ATF prüfen/wechseln.</li>
+      <li>Zündkerze, Unterbrecher, Kondensator und Zündzeitpunkt prüfen.</li>
+      <li>Vergaser und Benzinhahn reinigen.</li>
+      <li>Bremsbelag, Radlager, Lenkkopflager und Reifenalter prüfen.</li>
+      <li>Auspuff auf Verkokung und Dichtheit prüfen.</li>
+    </ul>
+
+    <div class="hinweis">
+      Gummi wird hart, Kontakte oxidieren, Benzin hinterlässt Rückstände und Schrauben können sich lockern. Regelmäßiges Anschauen verhindert viele Pannen.
+    </div>
+  </section>
+
+  <section id="werkzeug">
+    <h2>🛠️ Werkzeug und Schrauber-Regeln</h2>
+    <table>
+      <thead>
+        <tr><th>Werkzeug</th><th>Wofür?</th><th>Wer?</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Lappen + Handschuhe</td><td>Putzen, Benzin/Öl nicht an die Haut</td><td>Kind mit Aufsicht</td></tr>
+        <tr><td>Reifendruckmesser</td><td>Luftdruck prüfen</td><td>Kind darf ablesen</td></tr>
+        <tr><td>Kerzenschlüssel</td><td>Zündkerze herausdrehen</td><td>Erwachsener</td></tr>
+        <tr><td>Fühlerlehre</td><td>Kerzen- und Unterbrecherabstand</td><td>Erwachsener</td></tr>
+        <tr><td>Messuhr</td><td>OT und Zündzeitpunkt</td><td>Erwachsener/Werkstatt</td></tr>
+      </tbody>
+    </table>
+
+    <figure class="foto-box">
+      <img src="bilder/maxi-s/seite-13.jpg" alt="Luftpumpe im Kettenschutz und Starthebel" loading="lazy">
+      <figcaption><strong>Praktisch:</strong> Luftpumpe steckt im rechten Kettenschutz. Starthebel links am Lenker.</figcaption>
+    </figure>
+
+    <p><strong>Die 5 Schrauber-Regeln:</strong></p>
+    <ol>
+      <li>Vorher Foto machen, damit man weiß, wie es zusammen war.</li>
+      <li>Kleine Schrauben in eine Schale legen.</li>
+      <li>Nie mit Gewalt. Erst verstehen, dann drehen.</li>
+      <li>Nach Benzin/Öl Hände waschen.</li>
+      <li>Nach jeder Arbeit: Erwachsener macht Sicherheitskontrolle.</li>
+    </ol>
+  </section>
+
+  <section id="karte">
+    <h2>🗺️ Meine Maxi-Karte</h2>
+    <p>Diese Karte ausfüllen, bevor Ersatzteile gekauft werden. Sie hilft, Fehlkäufe zu vermeiden.</p>
+
+    <div class="karte-feld"><label>Name der Maxi</label><input type="text" placeholder="z.B. Blaue Blitz-Maxi"></div>
+    <div class="karte-feld"><label>Motor-Typ</label><input type="text" placeholder="z.B. E50 / E50A / unbekannt"></div>
+    <div class="karte-feld"><label>Vergaser</label><input type="text" placeholder="z.B. Bing 1/14"></div>
+    <div class="karte-feld"><label>Zündkerze</label><input type="text" placeholder="z.B. NGK B6HS"></div>
+    <div class="karte-feld"><label>Gemisch (nur mit Erwachsenem)</label><input type="text" placeholder="z.B. 25:1"></div>
+    <div class="karte-feld"><label>Reifen</label><input type="text" placeholder="Größe und Alter"></div>
+    <div class="karte-feld"><label>Was ist neu?</label><textarea rows="2"></textarea></div>
+    <div class="karte-feld"><label>Was macht Probleme?</label><textarea rows="2"></textarea></div>
+    <div class="karte-feld">
+      <label>Mein erster Diagnose-Satz</label>
+      <textarea rows="3" placeholder="Die Maxi macht folgendes Problem: ___. Ich habe zuerst ___ geprüft. Danach ___. Ein Erwachsener muss jetzt ___ prüfen."></textarea>
+    </div>
+  </section>
+
+  <section id="quiz">
+    <h2>❓ Kleines Quiz</h2>
+    <div class="quiz-frage">
+      <label>1. Welche 4 Dinge braucht der Motor?</label>
+      <input type="text">
+    </div>
+    <div class="quiz-frage">
+      <label>2. Warum ist reines Benzin gefährlich für den Zweitaktmotor?</label>
+      <input type="text">
+    </div>
+    <div class="quiz-frage">
+      <label>3. Was macht die Zündkerze?</label>
+      <input type="text">
+    </div>
+    <div class="quiz-frage">
+      <label>4. Warum soll ein Kind die Zündung nicht allein einstellen?</label>
+      <input type="text">
+    </div>
+    <div class="quiz-frage">
+      <label>5. Was prüfst du zuerst: teure Spule kaufen oder Kerzenstecker fest ansehen?</label>
+      <input type="text">
+    </div>
+  </section>
+
+  <section id="erwachsene">
+    <h2>👨‍🔧 Für Erwachsene: Kurzwerte</h2>
+    <p class="quellen">Werte vor der Arbeit am konkreten Fahrzeug gegenprüfen – Baujahr, Motor, Vergaser und Umbauten können abweichen.</p>
+    <table>
+      <thead>
+        <tr><th>Thema</th><th>Wert</th><th>Quelle</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Zündkerzenspalt</td><td>0,4–0,5 mm</td><td>Handbuch S1 + S2</td></tr>
+        <tr><td>Unterbrecherspalt</td><td>0,35–0,45 mm</td><td>Handbuch S2</td></tr>
+        <tr><td>Zündzeitpunkt E50</td><td>0,8–1,2 mm vor OT</td><td>Handbuch S2</td></tr>
+        <tr><td>E50 ATF</td><td>ATF Type F, ca. 170 cc</td><td>Handbuch S1 + S2</td></tr>
+        <tr><td>Kettenspiel</td><td>3/4 Zoll</td><td>Handbuch S1</td></tr>
+        <tr><td>Reifendruck</td><td>25 psi vorn, 32 psi hinten</td><td>Handbuch S1</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="herkunft">
+    <h2>📋 Herkunft der Daten und Bilder</h2>
+    <p class="quellen">Dieses HTML-Lernheft wurde am 5. Juni 2026 erstellt.</p>
+
+    <h3>Textquellen</h3>
+    <ul class="quellen">
+      <li><strong>Kinderanleitung:</strong> Puch_Maxi_S_Kinderanleitung_10_Jahre.docx (im Projektordner) – vereinfachte deutsche Erklärungen für Kinder.</li>
+      <li><strong>S1 – Bedienungshandbuch:</strong> maxi-s.pdf (Puch Maxi Owner's Manual, 32 Seiten) – Bedienung, Wartung, Fehlersuche.</li>
+      <li><strong>S2 – Werkstatthandbuch:</strong> maxi-s-2.pdf (Puch maxi Workshop Manual, 31 Seiten) – Technische Daten, Einstellwerte, Reparatur.</li>
+      <li><strong>S3:</strong> maxi-s-3.pdf (Korado Owners Manual, 32 Seiten) – verwandtes Puch-Modell.</li>
+      <li><strong>S4:</strong> maxi-s-4.pdf (Ersatzteilkatalog, 127 Seiten) – Teileübersicht.</li>
+    </ul>
+
+    <h3>Bildverarbeitung</h3>
+    <ul class="quellen">
+      <li>Alle Fotos in <code>bilder/maxi-s/</code>, <code>bilder/maxi-s-2/</code> usw. wurden mit <code>pdftoppm</code> aus den Original-PDFs gerendert (150 dpi, JPEG).</li>
+      <li>Keine Bilder wurden verändert oder neu gezeichnet – es sind echte Scans aus den Handbüchern.</li>
+      <li>Deutsche Bildunterschriften wurden für Kinder verständlich ergänzt; Originaltexte stehen in den PDFs auf Englisch.</li>
+    </ul>
+
+    <h3>Verwendete Handbuchseiten (Auswahl)</h3>
+    <table class="quellen">
+      <thead><tr><th>Kapitel</th><th>Bilddatei</th><th>Original</th></tr></thead>
+      <tbody>
+        <tr><td>Deckblätter</td><td>maxi-s/seite-01, maxi-s-2/seite-01</td><td>Owner's + Workshop Manual Cover</td></tr>
+        <tr><td>Technische Daten</td><td>maxi-s-2/seite-04</td><td>Technical Data</td></tr>
+        <tr><td>Seriennummer</td><td>maxi-s/seite-08</td><td>Serial Number Location</td></tr>
+        <tr><td>Bremsen / Stopschalter</td><td>maxi-s/seite-12, seite-14</td><td>Operating Controls</td></tr>
+        <tr><td>Kraftfluss</td><td>maxi-s-2/seite-16</td><td>Power Flow Diagram</td></tr>
+        <tr><td>Benzin / Vergaser</td><td>maxi-s/seite-11, seite-17</td><td>Fuel Valve, Gas/Oil Mix</td></tr>
+        <tr><td>Wartungsplan</td><td>maxi-s/seite-26</td><td>Maintenance Chart</td></tr>
+        <tr><td>Einstellwerte</td><td>maxi-s-2/seite-05</td><td>Adjustments</td></tr>
+        <tr><td>Fehlersuche</td><td>maxi-s/seite-22, seite-23</td><td>Trouble Shooting</td></tr>
+        <tr><td>Kette</td><td>maxi-s/seite-25</td><td>Chains</td></tr>
+        <tr><td>Parken</td><td>maxi-s/seite-20</td><td>Stop and Park</td></tr>
+        <tr><td>Getriebeöl</td><td>maxi-s/seite-15</td><td>Transmission Oil</td></tr>
+        <tr><td>Werkzeuge</td><td>maxi-s-2/seite-08</td><td>Special Tools</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <p>Puch Maxi S – Anleitung für junge Besitzer · Lernheft, kein offizielles Reparaturhandbuch · Immer mit erwachsener Aufsicht arbeiten.</p>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('offen')">
+  <img src="" alt="Vergrößertes Handbuchfoto" id="lightbox-img">
+</div>
+
+<script>
+  // Lightbox für Handbuchfotos
+  document.querySelectorAll('.foto-box img').forEach(img => {
+    img.addEventListener('click', () => {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-img').src = img.src;
+      lb.classList.add('offen');
+    });
+  });
+
+  // Aktives Kapitel in Navigation markieren
+  const sections = document.querySelectorAll('section[id], header[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // Eingaben im localStorage speichern
+  const STORAGE_KEY = 'maxi-karte';
+  document.querySelectorAll('#karte input, #karte textarea, #quiz input').forEach((el, i) => {
+    el.dataset.key = 'feld-' + i;
+    const saved = localStorage.getItem(STORAGE_KEY + '-' + i);
+    if (saved) el.value = saved;
+    el.addEventListener('input', () => localStorage.setItem(STORAGE_KEY + '-' + i, el.value));
+  });
+</script>
+
+</body>
+</html>

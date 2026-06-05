@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+.railway/
+
+# Quelldateien bleiben lokal – Live-Site braucht nur index.html + bilder/
+*.pdf
+*.docx
