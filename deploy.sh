@@ -7,10 +7,10 @@ if ! railway whoami &>/dev/null; then
   railway login
 fi
 
-if [ ! -f .railway/config.json ] || ! grep -q '"project"' .railway/config.json 2>/dev/null; then
-  echo "Projekt verknüpfen..."
-  railway init
-fi
+PROJECT_ID="20265fa0-446a-453a-9c9b-d3e423375c5b"
+
+echo "Projekt verknüpfen: $PROJECT_ID"
+railway link --project "$PROJECT_ID" --environment production
 
 echo "Deploy starten..."
 railway up --detach

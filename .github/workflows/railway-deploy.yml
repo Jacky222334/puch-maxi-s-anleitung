@@ -12,6 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Link Railway project
+        run: railway link --project 20265fa0-446a-453a-9c9b-d3e423375c5b --environment production
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
       - name: Deploy to Railway
         run: railway up --detach
         env:
