@@ -7,10 +7,8 @@ if ! railway whoami &>/dev/null; then
   railway login
 fi
 
-PROJECT_ID="20265fa0-446a-453a-9c9b-d3e423375c5b"
-
-echo "Projekt verknüpfen: $PROJECT_ID"
-railway link --project "$PROJECT_ID" --environment production
+echo "Projekt verknüpfen..."
+railway link --project vigilant-encouragement --environment production --service puch-maxi-s-anleitung
 
 echo "Deploy starten..."
 railway up --detach
