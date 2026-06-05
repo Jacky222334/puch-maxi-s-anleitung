@@ -81,24 +81,61 @@
       max-width: 900px;
     }
 
-    /* Hero */
+    /* Hero / Titelseite */
     .hero {
-      background: linear-gradient(135deg, var(--blau) 0%, #0d3d5c 100%);
-      color: #fff;
+      position: relative;
       border-radius: 16px;
-      padding: 2.5rem 2rem;
+      overflow: hidden;
       margin-bottom: 2.5rem;
       box-shadow: var(--schatten);
+      background: #1a1a1a;
     }
 
-    .hero h1 { font-size: 2rem; margin-bottom: .5rem; }
-    .hero .untertitel { opacity: .9; font-size: 1.15rem; }
-    .hero .deckblatt { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .hero .deckblatt img {
-      max-height: 140px;
-      border-radius: 8px;
-      border: 3px solid rgba(255,255,255,.3);
-      background: #fff;
+    .hero-bild {
+      width: 100%;
+      display: block;
+      vertical-align: middle;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      padding: 1.5rem 1.75rem 1.75rem;
+      background: linear-gradient(transparent, rgba(0,0,0,.72));
+      color: #fff;
+    }
+
+    .hero-overlay h1 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,.5);
+    }
+
+    .hero-overlay .untertitel {
+      font-size: 1rem;
+      opacity: .92;
+      text-shadow: 0 1px 3px rgba(0,0,0,.4);
+    }
+
+    .hero-handbuecher {
+      display: flex;
+      gap: .75rem;
+      margin-top: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-handbuecher img {
+      height: 72px;
+      border-radius: 6px;
+      border: 2px solid rgba(255,255,255,.35);
+      opacity: .9;
+    }
+
+    .hero-handbuecher span {
+      font-size: .78rem;
+      opacity: .75;
+      align-self: center;
     }
 
     /* Kapitel */
@@ -297,7 +334,9 @@
       main, footer { margin-left: 0; padding: 1.2rem; }
       .ampel { grid-template-columns: 1fr; }
       .foto-zwei { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 1.5rem; }
+      .hero-overlay h1 { font-size: 1.15rem; }
+      .hero-overlay .untertitel { font-size: .9rem; }
+      .hero-handbuecher img { height: 56px; }
     }
 
     @media print {
@@ -336,11 +375,15 @@
 <main>
 
   <header class="hero" id="start">
-    <h1>Puch Maxi S</h1>
-    <p class="untertitel">Die einfache Anleitung für einen 10-jährigen Besitzer</p>
-    <div class="deckblatt">
-      <img src="bilder/maxi-s/seite-01.jpg" alt="Deckblatt Owner's Manual Puch Maxi">
-      <img src="bilder/maxi-s-2/seite-01.jpg" alt="Deckblatt Workshop Manual Puch maxi">
+    <img class="hero-bild" src="bilder/titelbild.png" alt="Puch Maxi S – Zwei Räder, ein Gefühl. Junger Besitzer an seiner roten Maxi S am See bei Sonnenuntergang.">
+    <div class="hero-overlay">
+      <h1>Anleitung für junge Besitzer</h1>
+      <p class="untertitel">Alles über deine Puch Maxi S – mit echten Fotos aus dem Original-Handbuch</p>
+      <div class="hero-handbuecher">
+        <img src="bilder/maxi-s/seite-01.jpg" alt="Owner's Manual">
+        <img src="bilder/maxi-s-2/seite-01.jpg" alt="Workshop Manual">
+        <span>Basierend auf den Original-Handbüchern</span>
+      </div>
     </div>
   </header>
 
@@ -808,7 +851,8 @@
     <table class="quellen">
       <thead><tr><th>Kapitel</th><th>Bilddatei</th><th>Original</th></tr></thead>
       <tbody>
-        <tr><td>Deckblätter</td><td>maxi-s/seite-01, maxi-s-2/seite-01</td><td>Owner's + Workshop Manual Cover</td></tr>
+        <tr><td>Titelseite</td><td>bilder/titelbild.png</td><td>Eigenes Titelbild (Juni 2026)</td></tr>
+        <tr><td>Handbuch-Deckblätter</td><td>maxi-s/seite-01, maxi-s-2/seite-01</td><td>Owner's + Workshop Manual Cover</td></tr>
         <tr><td>Technische Daten</td><td>maxi-s-2/seite-04</td><td>Technical Data</td></tr>
         <tr><td>Seriennummer</td><td>maxi-s/seite-08</td><td>Serial Number Location</td></tr>
         <tr><td>Bremsen / Stopschalter</td><td>maxi-s/seite-12, seite-14</td><td>Operating Controls</td></tr>
